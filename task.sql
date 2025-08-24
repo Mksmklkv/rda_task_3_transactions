@@ -7,9 +7,9 @@ USE ShopDB;
 START TRANSACTION; 
 
 -- And some data should be created inside the transaction 
-insert into Orders (CustomerID, Date) values (1, CURRENT_DATE); 
+INSERT INTO Orders (CustomerID, Date) values (1, CURRENT_DATE); 
 SET @order_id = LAST_INSERT_ID();
-insert into OrderItems (OrderID, ProductID, Count) values (@order_id, 1, 1);
-update Products set WarehouseAmount = WarehouseAmount - 1 where WarehouseAmount >= 1 and ID = 1;
+INSERT INTO OrderItems (OrderID, ProductID, Count) values (@order_id, 1, 1);
+UPDATE Products set WarehouseAmount = WarehouseAmount - 1 where WarehouseAmount >= 1 and ID = 1;
 
 COMMIT; 
